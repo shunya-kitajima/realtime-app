@@ -37,5 +37,12 @@ export const useMutateAuth = () => {
     }
   )
 
-  return { loginMutation, registerMutation }
+  return {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    loginMutation,
+    registerMutation,
+  }
 }
