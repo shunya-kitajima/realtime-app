@@ -37,5 +37,5 @@ export const useMutateAuth = () => {
     }
   )
 
-  return {}
+  return { loginMutation, registerMutation }
 }
