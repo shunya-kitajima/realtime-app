@@ -14,7 +14,7 @@ export const DashBoard: React.FC = () => {
   }
 
   return (
-    <div>
+    <>
       <ArrowRightOnRectangleIcon
         className="my-6 h-6 w-6 cursor-pointer text-blue-500"
         onClick={signOut}
@@ -30,6 +30,6 @@ export const DashBoard: React.FC = () => {
           </Suspense>
         </ErrorBoundary>
       </div>
-    </div>
+    </>
   )
 }
