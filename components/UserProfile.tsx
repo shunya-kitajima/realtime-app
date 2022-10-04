@@ -80,6 +80,18 @@ export const UserProfile: React.FC = () => {
         />
       )}
       {isLoading && <Spinner />}
+      <div className="flex justify-center">
+        <label htmlFor="avatar">
+          <CameraIcon className="cursor-poingter my-3 h-7 w-7 text-gray-500" />
+        </label>
+        <input
+          className="hidden"
+          type="file"
+          id="avatar"
+          accept="image/*"
+          onChange={(e) => useMutateUploadAvatarImg.mutate(e)}
+        />
+      </div>
     </>
   )
 }
