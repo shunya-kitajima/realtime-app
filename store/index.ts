@@ -13,17 +13,17 @@ type State = {
 const useStore = create<State>((set) => ({
   session: null,
   setSesstion: (payload) => set({ session: payload }),
-  editedprofile: { username: '', avatar_url: '', favorites: '' },
+  editedprofile: { user_name: '', avatar_url: '', favorites: '' },
   updateEditedProfile: (payload) =>
     set({
       editedprofile: {
-        username: payload.username,
+        user_name: payload.user_name,
         avatar_url: payload.avatar_url,
         favorites: payload.favorites,
       },
     }),
   resetEditedProfile: () =>
-    set({ editedprofile: { username: '', avatar_url: '', favorites: '' } }),
+    set({ editedprofile: { user_name: '', avatar_url: '', favorites: '' } }),
 }))
 
 export default useStore
