@@ -29,5 +29,5 @@ export const useUploadAvatarImg = () => {
     }
   )
 
-  return {}
+  return { useMutateUploadAvatarImg }
 }
