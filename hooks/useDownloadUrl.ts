@@ -22,9 +22,8 @@ export const useDownloadUrl = (
         }
         setFullUrl(URL.createObjectURL(data!))
         setIsLoading(false)
-
-        download()
       }
+      download()
     }
   }, [filePath, bucketName])
 
