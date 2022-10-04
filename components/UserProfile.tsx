@@ -24,7 +24,7 @@ export const UserProfile: React.FC = () => {
   const updateProfile = () => {
     updateProfileMutation.mutate({
       id: session?.user?.id,
-      username: editedProfile.username,
+      user_name: editedProfile.user_name,
       avatar_url: editedProfile.avatar_url,
       favorites: editedProfile.favorites,
     })
@@ -32,7 +32,7 @@ export const UserProfile: React.FC = () => {
 
   return (
     <>
-      <p className="mb-4">{profile?.username}</p>
+      <p className="mb-4">{profile?.user_name}</p>
       {profile?.created_at && (
         <p className="my-1 text-sm">
           {format(new Date(profile.created_at), 'yyyy-MM-dd HH:mm:ss')}
@@ -47,8 +47,10 @@ export const UserProfile: React.FC = () => {
       <input
         className="my-2 mx-2 rounded border border-gray-300 px-2 py-2 text-sm focus:outline-none"
         type="text"
-        value={editedProfile.username || ''}
-        onChange={(e) => update({ ...editedProfile, username: e.target.value })}
+        value={editedProfile.user_name || ''}
+        onChange={(e) =>
+          update({ ...editedProfile, user_name: e.target.value })
+        }
       />
       <p className="mt-4">Favorites</p>
       <input
@@ -61,12 +63,12 @@ export const UserProfile: React.FC = () => {
       />
       <button
         className={`my-5 rounded ${
-          updateProfileMutation.isLoading || !editedProfile.username
+          updateProfileMutation.isLoading || !editedProfile.user_name
             ? 'bg-gray-400'
             : 'bg-indigo-600'
         } px-3 py-2 text-sm font-medium text-white`}
         onClick={updateProfile}
-        disabled={updateProfileMutation.isLoading || !editedProfile.username}
+        disabled={updateProfileMutation.isLoading || !editedProfile.user_name}
       >
         {updateProfileMutation.isLoading ? '...Loading' : 'Update'}
       </button>
