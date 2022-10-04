@@ -70,6 +70,16 @@ export const UserProfile: React.FC = () => {
       >
         {updateProfileMutation.isLoading ? '...Loading' : 'Update'}
       </button>
+      {avatarUrl && (
+        <Image
+          src={avatarUrl}
+          alt="Avatar"
+          className="rounded-full"
+          width={150}
+          height={150}
+        />
+      )}
+      {isLoading && <Spinner />}
     </>
   )
 }
