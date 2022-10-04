@@ -11,7 +11,12 @@ import { Spinner } from './Spinner'
 import { UserProfile } from './UserProfile'
 
 export const DashBoard: React.FC = () => {
+  const queryClient = useQueryClient()
+  const reset = useStore((state) => state.resetEditedProfile)
+
   const signOut = () => {
+    reset()
+    queryClient.removeQueries(['profile'])
     supabase.auth.signOut()
   }
 
