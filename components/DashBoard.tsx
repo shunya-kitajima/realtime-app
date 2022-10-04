@@ -1,10 +1,12 @@
 import React, { Suspense } from 'react'
+import { useQueryClient } from 'react-query'
 import { ErrorBoundary } from 'react-error-boundary'
 import {
   ArrowRightOnRectangleIcon,
   ExclamationCircleIcon,
 } from '@heroicons/react/24/solid'
 import { supabase } from '../utiles/supabase'
+import useStore from '../store'
 import { Spinner } from './Spinner'
 import { UserProfile } from './UserProfile'
 
