@@ -84,7 +84,7 @@ export const UserProfile: React.FC = () => {
       {isLoading && <Spinner />}
       <div className="flex justify-center">
         <label htmlFor="avatar">
-          <CameraIcon className="cursor-poingter my-3 h-7 w-7 text-gray-500" />
+          <CameraIcon className="my-3 h-7 w-7 cursor-pointer text-gray-500" />
         </label>
         <input
           className="hidden"
