@@ -2,18 +2,19 @@ import { useQuery } from 'react-query'
 import { supabase } from '../utiles/supabase'
 import { Comment } from '../types'
 
-export const useQueryComments = () => {
+export const useQueryComments = (postId: string) => {
   const getComments = async () => {
     const { data, error } = await supabase
       .from('comments')
       .select('*')
+      .eq('post_id', postId)
       .order('id', { ascending: true })
     if (error) throw new Error(error.message)
     return data
   }
 
   return useQuery<Comment[], Error>({
-    queryKey: ['comments'],
+    queryKey: ['comments', postId],
     queryFn: getComments,
     staleTime: Infinity,
   })
