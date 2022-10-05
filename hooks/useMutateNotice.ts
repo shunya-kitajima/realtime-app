@@ -7,7 +7,7 @@ export const useMutateNotice = () => {
   const reset = useStore((state) => state.resetEditedNotice)
 
   const createNoticeMutation = useMutation(
-    async (notice: Omit<Notice, 'id' | 'create_at'>) => {
+    async (notice: Omit<Notice, 'id' | 'created_at'>) => {
       const { data, error } = await supabase.from('notices').insert(notice)
       if (error) throw new Error(error.message)
       return data
