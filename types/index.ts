@@ -19,3 +19,8 @@ export type Notice = {
   user_id: string
   content: string
 }
+
+export type EditedNotice = {
+  id: string
+  content: string
+}
