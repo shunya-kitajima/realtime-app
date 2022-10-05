@@ -24,3 +24,17 @@ export type EditedNotice = {
   id: string
   content: string
 }
+
+export type Post = {
+  id: string
+  created_at: string
+  title: string
+  post_url: string
+  user_id: string | undefined
+}
+
+export type EditedPost = {
+  id: string
+  title: string
+  post_url: string
+}
