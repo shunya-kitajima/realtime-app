@@ -5,5 +5,23 @@ import { NoticeFormMemo } from './NoticeForm'
 import { NoticeItemMemo } from './NoticeItem'
 
 export const Notification: React.FC = () => {
-  return <div>Notification</div>
+  const { data: notices } = useQueryNotices()
+  useSubscribeNotices()
+
+  return (
+    <>
+      <p className="mb-4 text-center">Notification</p>
+      <NoticeFormMemo />
+      <ul data-testid="ul-notice" className="my-5">
+        {notices?.map((notice) => (
+          <NoticeItemMemo
+            key={notice.id}
+            id={notice.id}
+            content={notice.content}
+            user_id={notice.user_id}
+          />
+        ))}
+      </ul>
+    </>
+  )
 }
