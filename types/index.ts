@@ -16,8 +16,8 @@ export type EditedProfile = {
 export type Notice = {
   id: string
   created_at: string
-  user_id: string
   content: string
+  user_id: string
 }
 
 export type EditedNotice = {
