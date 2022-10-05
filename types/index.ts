@@ -38,3 +38,16 @@ export type EditedPost = {
   title: string
   post_url: string
 }
+
+export type Comment = {
+  id: string
+  created_at: string
+  user_id: string | undefined
+  post_id: string
+  comment: string
+}
+
+export type EditedComment = {
+  id: string
+  comment: string
+}
