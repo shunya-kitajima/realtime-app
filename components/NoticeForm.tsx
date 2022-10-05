@@ -36,6 +36,7 @@ export const NoticeForm: React.FC = () => {
           className={`rounded ${
             editedNotice.content ? 'bg-indigo-600' : 'bg-gray-300'
           } px-3 py-2 text-sm text-white`}
+          disabled={!editedNotice.content}
         >
           {editedNotice.id ? 'Update' : 'Create'}
         </button>
