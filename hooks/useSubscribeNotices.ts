@@ -59,6 +59,4 @@ export const useSubscribeNotices = () => {
       removeSubscription()
     }
   }, [queryClient])
-
-  return {}
 }
