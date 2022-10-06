@@ -56,6 +56,35 @@ export const PostForm: React.FC = () => {
           {editedPost.id ? 'Update' : 'Create'}
         </button>
       </div>
+      <div className="flex justify-center">
+        {postUrl && (
+          <Image
+            src={postUrl}
+            alt="Image"
+            className="rounded"
+            width={150}
+            height={150}
+          />
+        )}
+      </div>
+      <div className="flex justify-center">
+        {useMutateUploadPostImg.isLoading && <Spinner />}
+      </div>
+      <div className="flex justify-center">
+        <label htmlFor="post">
+          <CameraIcon className="mt-2 h-7 w-7 cursor-pointer text-gray-500" />
+        </label>
+        <input
+          className="hidden"
+          type="file"
+          id="post"
+          accept="image/*"
+          onChange={async (e) => {
+            await useMutateUploadPostImg.mutateAsync(e)
+            e.target.value = ''
+          }}
+        />
+      </div>
     </form>
   )
 }
