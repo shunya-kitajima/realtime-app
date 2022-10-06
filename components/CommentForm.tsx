@@ -33,7 +33,32 @@ const CommentForm: React.FC<Props> = ({
     }
   }
 
-  return <div>CommentForm</div>
+  return (
+    <form onSubmit={submitHandler}>
+      <div className="flex items-center justify-center">
+        <input
+          type="text"
+          className="my-2 rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none"
+          placeholder="New Comment ?"
+          value={editedComment.comment}
+          onChange={(e) =>
+            setEditedComment({ ...editedComment, comment: e.target.value })
+          }
+        />
+        <button
+          data-testid="btn-comment"
+          type="submit"
+          disabled={!editedComment.comment}
+        >
+          <EnvelopeIcon
+            className={`ml-3 h-6 w-6 cursor-pointer ${
+              editedComment.comment ? 'text-blue-500' : 'text-gray-500'
+            }`}
+          />
+        </button>
+      </div>
+    </form>
+  )
 }
 
 export const CommentFormMemo = memo(CommentForm)
