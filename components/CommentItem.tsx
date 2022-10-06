@@ -11,7 +11,22 @@ import { useMutateComment } from '../hooks/useMutateComment'
 import { useDownloadUrl } from '../hooks/useDownloadUrl'
 import { EditedComment } from '../types'
 
-const CommentItem: React.FC = () => {
+type Props = {
+  id: string
+  comment: string
+  user_id: string | undefined
+  setEditedComment: Dispatch<SetStateAction<EditedComment>>
+}
+
+const CommentItem: React.FC<Props> = ({
+  id,
+  comment,
+  user_id,
+  setEditedComment,
+}) => {
+  const session = useStore((state) => state.session)
+  const { deleteCommentMutation } = useMutateComment()
+
   return <div>CommentItem</div>
 }
 
