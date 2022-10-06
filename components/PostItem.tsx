@@ -74,6 +74,18 @@ const PostItem: React.FC<Omit<Post, 'created_at'>> = ({
             </div>
           )}
         </div>
+        <div className="flex">
+          {postUrl && (
+            <Image
+              src={postUrl}
+              alt="Image"
+              className="rounded-lg"
+              width={300}
+              height={220}
+            />
+          )}
+          {(isLoadingAvatar || isLoadingPost) && <Spinner />}
+        </div>
       </li>
     </>
   )
