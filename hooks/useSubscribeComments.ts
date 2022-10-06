@@ -4,12 +4,12 @@ import { SupabaseRealtimePayload } from '@supabase/supabase-js'
 import { supabase } from '../utiles/supabase'
 import { Comment } from '../types'
 
-export const useSubscribeComments = () => {
+export const useSubscribeComments = (postId: string) => {
   const queryClient = useQueryClient()
 
   useEffect(() => {
     const subsc = supabase
-      .from('comments')
+      .from(`comments:post_id=eq.${postId}`)
       .on('INSERT', (payload: SupabaseRealtimePayload<Comment>) => {
         let previousComments = queryClient.getQueryData<Comment[]>(['comments'])
         if (!previousComments) previousComments = []
