@@ -45,6 +45,20 @@ const CommentItem: React.FC<Props> = ({
         )}
         <span className="mx-1 text-sm">{comment}</span>
       </div>
+      {session?.user?.id === user_id && (
+        <div className="flex">
+          <PencilIcon
+            data-testid="pencil-comment"
+            className="mx-1 h-5 w-5 cursor-pointer text-blue-500"
+            onClick={() => setEditedComment({ id: id, comment: comment })}
+          />
+          <TrashIcon
+            data-testid="trash-comment"
+            className="h-5 w-5 cursor-pointer text-blue-500"
+            onClick={() => deleteCommentMutation.mutate(id)}
+          />
+        </div>
+      )}
     </li>
   )
 }
