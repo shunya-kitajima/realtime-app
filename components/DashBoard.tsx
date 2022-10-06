@@ -10,17 +10,21 @@ import useStore from '../store'
 import { Spinner } from './Spinner'
 import { UserProfile } from './UserProfile'
 import { Notification } from './Notification'
+import { Feed } from './Feed'
 
 export const DashBoard: React.FC = () => {
   const queryClient = useQueryClient()
   const resetEditedProfile = useStore((state) => state.resetEditedProfile)
   const resetEditedNotice = useStore((state) => state.resetEditedNotice)
+  const resetEditedPost = useStore((state) => state.resetEditedPost)
 
   const signOut = () => {
     resetEditedProfile()
     resetEditedNotice()
+    resetEditedPost()
     queryClient.removeQueries(['profile'])
     queryClient.removeQueries(['notices'])
+    queryClient.removeQueries(['posts'])
     supabase.auth.signOut()
   }
 
