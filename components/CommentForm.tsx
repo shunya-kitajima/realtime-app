@@ -4,7 +4,13 @@ import useStore from '../store'
 import { useMutateComment } from '../hooks/useMutateComment'
 import { EditedComment } from '../types'
 
-const CommentForm: React.FC = () => {
+type Props = {
+  postId: string
+  editedComment: EditedComment
+  setEditedComment: Dispatch<SetStateAction<EditedComment>>
+}
+
+const CommentForm: React.FC<Props> = () => {
   return <div>CommentForm</div>
 }
 
