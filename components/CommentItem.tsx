@@ -43,6 +43,7 @@ const CommentItem: React.FC<Props> = ({
         ) : (
           <UserCircleIcon className="inline-block h-8 w-8 cursor-pointer text-gray-500" />
         )}
+        <span className="mx-1 text-sm">{comment}</span>
       </div>
     </li>
   )
