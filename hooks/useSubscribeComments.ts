@@ -11,10 +11,13 @@ export const useSubscribeComments = (postId: string) => {
     const subsc = supabase
       .from(`comments:post_id=eq.${postId}`)
       .on('INSERT', (payload: SupabaseRealtimePayload<Comment>) => {
-        let previousComments = queryClient.getQueryData<Comment[]>(['comments'])
+        let previousComments = queryClient.getQueryData<Comment[]>([
+          'comments',
+          postId,
+        ])
         if (!previousComments) previousComments = []
         queryClient.setQueryData<Comment[]>(
-          ['comments'],
+          ['comments', postId],
           [
             ...previousComments,
             {
@@ -28,10 +31,13 @@ export const useSubscribeComments = (postId: string) => {
         )
       })
       .on('UPDATE', (payload: SupabaseRealtimePayload<Comment>) => {
-        let previousComments = queryClient.getQueryData<Comment[]>(['comments'])
+        let previousComments = queryClient.getQueryData<Comment[]>([
+          'comments',
+          postId,
+        ])
         if (!previousComments) previousComments = []
         queryClient.setQueryData<Comment[]>(
-          ['comments'],
+          ['comments', postId],
           previousComments.map((comment) =>
             comment.id === payload.new.id
               ? {
@@ -46,10 +52,13 @@ export const useSubscribeComments = (postId: string) => {
         )
       })
       .on('DELETE', (payload: SupabaseRealtimePayload<Comment>) => {
-        let previousComments = queryClient.getQueryData<Comment[]>(['comments'])
+        let previousComments = queryClient.getQueryData<Comment[]>([
+          'comments',
+          postId,
+        ])
         if (!previousComments) previousComments = []
         queryClient.setQueryData<Comment[]>(
-          ['comments'],
+          ['comments', postId],
           previousComments.filter((comment) => comment.id !== payload.old.id)
         )
       })
@@ -60,5 +69,5 @@ export const useSubscribeComments = (postId: string) => {
     return () => {
       removeSubscription()
     }
-  }, [queryClient])
+  }, [queryClient, postId])
 }
