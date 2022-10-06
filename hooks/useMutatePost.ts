@@ -59,4 +59,6 @@ export const useMutatePost = () => {
       },
     }
   )
+
+  return { createPostMutation, updatePostMutation, deletePostMutation }
 }
