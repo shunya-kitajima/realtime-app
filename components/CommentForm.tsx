@@ -10,7 +10,29 @@ type Props = {
   setEditedComment: Dispatch<SetStateAction<EditedComment>>
 }
 
-const CommentForm: React.FC<Props> = () => {
+const CommentForm: React.FC<Props> = ({
+  postId,
+  editedComment,
+  setEditedComment,
+}) => {
+  const session = useStore((state) => state.session)
+  const { createCommentMutation, updateCommentMutation } = useMutateComment()
+
+  const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (editedComment.id === '') {
+      await createCommentMutation.mutateAsync({
+        user_id: session?.user?.id,
+        post_id: postId,
+        comment: editedComment.comment,
+      })
+      setEditedComment({ id: '', comment: '' })
+    } else {
+      await updateCommentMutation.mutateAsync(editedComment)
+      setEditedComment({ id: '', comment: '' })
+    }
+  }
+
   return <div>CommentForm</div>
 }
 
