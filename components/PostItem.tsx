@@ -53,6 +53,26 @@ const PostItem: React.FC<Omit<Post, 'created_at'>> = ({
             )}
             <span className="ml-2 font-bold">{title}</span>
           </div>
+          {session?.user?.id === user_id && (
+            <div className="flex pr-4">
+              <PencilIcon
+                data-testid="pencil-post"
+                className="mx-1 h-5 w-5 cursor-pointer text-blue-500"
+                onClick={() =>
+                  update({
+                    id: id,
+                    title: title,
+                    post_url: post_url,
+                  })
+                }
+              />
+              <TrashIcon
+                data-testid="trash-post"
+                className="h-5 w-5 cursor-pointer text-blue-500"
+                onClick={() => deletePostMutation.mutate(id)}
+              />
+            </div>
+          )}
         </div>
       </li>
     </>
