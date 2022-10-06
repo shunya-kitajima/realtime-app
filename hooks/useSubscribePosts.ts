@@ -13,7 +13,7 @@ export const useSubscribePosts = () => {
       .on('INSERT', (payload: SupabaseRealtimePayload<Post>) => {
         let previousPosts = queryClient.getQueryData<Post[]>(['posts'])
         if (!previousPosts) previousPosts = []
-        queryClient.setQueryData(
+        queryClient.setQueryData<Post[]>(
           ['posts'],
           [
             ...previousPosts,
@@ -30,7 +30,7 @@ export const useSubscribePosts = () => {
       .on('UPDATE', (payload: SupabaseRealtimePayload<Post>) => {
         let previousPosts = queryClient.getQueryData<Post[]>(['posts'])
         if (!previousPosts) previousPosts = []
-        queryClient.setQueryData(
+        queryClient.setQueryData<Post[]>(
           ['posts'],
           previousPosts.map((post) =>
             post.id === payload.new.id
@@ -48,7 +48,7 @@ export const useSubscribePosts = () => {
       .on('DELETE', (payload: SupabaseRealtimePayload<Post>) => {
         let previousPosts = queryClient.getQueryData<Post[]>(['posts'])
         if (!previousPosts) previousPosts = []
-        queryClient.setQueryData(
+        queryClient.setQueryData<Post[]>(
           ['posts'],
           previousPosts.filter((post) => post.id !== payload.old.id)
         )
