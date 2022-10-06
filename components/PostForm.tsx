@@ -7,7 +7,7 @@ import { useDownloadUrl } from '../hooks/useDownloadUrl'
 import { useUploadPostImg } from '../hooks/useUploadPostImg'
 import { Spinner } from './Spinner'
 
-export const PostForm: React.FC = () => {
+const PostForm: React.FC = () => {
   const session = useStore((state) => state.session)
   const editedPost = useStore((state) => state.editedpost)
   const update = useStore((state) => state.updateEditedPost)
@@ -88,3 +88,5 @@ export const PostForm: React.FC = () => {
     </form>
   )
 }
+
+export const PostFormMemo = memo(PostForm)
