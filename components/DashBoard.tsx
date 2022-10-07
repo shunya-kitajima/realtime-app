@@ -31,6 +31,7 @@ export const DashBoard: React.FC = () => {
   return (
     <>
       <ArrowRightOnRectangleIcon
+        data-testid="logout"
         className="my-6 h-6 w-6 cursor-pointer text-blue-500"
         onClick={signOut}
       />
