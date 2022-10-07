@@ -34,6 +34,7 @@ const PostItem: React.FC<Omit<Post, 'created_at'>> = ({
     post_url,
     'posts'
   )
+  const [openComments, setOpenComments] = useState(false)
 
   return (
     <>
@@ -89,6 +90,11 @@ const PostItem: React.FC<Omit<Post, 'created_at'>> = ({
         <div className="my-3 flex justify-center">
           {(isLoadingAvatar || isLoadingPost) && <Spinner />}
         </div>
+        <ChatBubbleLeftRightIcon
+          data-testid="open-comments"
+          className="ml-2 h-6 w-6 cursor-pointer text-blue-500"
+          onClick={() => setOpenComments(!openComments)}
+        />
       </li>
     </>
   )
