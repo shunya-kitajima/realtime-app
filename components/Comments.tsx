@@ -5,6 +5,10 @@ import { CommentFormMemo } from './CommentForm'
 import { CommentItemMemo } from './CommentItem'
 import { EditedComment } from '../types'
 
+type Props = {
+  postId: string
+}
+
 const Comments: React.FC = () => {
   return <div>Comments</div>
 }
