@@ -13,6 +13,7 @@ import { useMutatePost } from '../hooks/useMutatePost'
 import { useQueryAvatar } from '../hooks/useQueryAvatar'
 import { useDownloadUrl } from '../hooks/useDownloadUrl'
 import { Spinner } from './Spinner'
+import { CommentsMemo } from './Comments'
 import { Post } from '../types'
 
 const PostItem: React.FC<Omit<Post, 'created_at'>> = ({
