@@ -9,8 +9,23 @@ type Props = {
   postId: string
 }
 
-const Comments: React.FC = () => {
-  return <div>Comments</div>
+const Comments: React.FC<Props> = ({ postId }) => {
+  const [editedComment, setEditedComment] = useState<EditedComment>({
+    id: '',
+    comment: '',
+  })
+  const { data: comments } = useQueryComments(postId)
+  useSubscribeComments(postId)
+
+  return (
+    <div className="w-60">
+      <CommentFormMemo
+        postId={postId}
+        editedComment={editedComment}
+        setEditedComment={setEditedComment}
+      />
+    </div>
+  )
 }
 
 export const CommentsMemo = memo(Comments)
