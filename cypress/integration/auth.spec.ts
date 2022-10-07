@@ -24,5 +24,12 @@ describe('Authentication', () => {
     cy.get('[type="submit"]').click()
     cy.get('[data-testid="logout"]').should('not.exist')
   })
+  it('Shall navigate to DashBoard when successfully registered', () => {
+    cy.get('input[placeholder="Email"]').type('user3@test.com')
+    cy.get('input[placeholder="Password"]').type('password')
+    cy.contains('change mode ?').click()
+    cy.get('[type="submit"]').click()
+    cy.get('[data-testid="logout"]').should('be.visible')
+  })
 })
 export {}
