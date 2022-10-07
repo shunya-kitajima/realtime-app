@@ -47,6 +47,7 @@ export const UserProfile: React.FC = () => {
       <input
         className="my-2 mx-2 rounded border border-gray-300 px-2 py-2 text-sm focus:outline-none"
         type="text"
+        placeholder="Username"
         value={editedProfile.user_name || ''}
         onChange={(e) =>
           update({ ...editedProfile, user_name: e.target.value })
