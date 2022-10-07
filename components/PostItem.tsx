@@ -95,17 +95,23 @@ const PostItem: React.FC<Omit<Post, 'created_at'>> = ({
           className="ml-2 h-6 w-6 cursor-pointer text-blue-500"
           onClick={() => setOpenComments(!openComments)}
         />
-        <Suspense
+        <ErrorBoundary
           fallback={
-            <div className="flex justify-center">
-              <Spinner />
-            </div>
+            <ExclamationCircleIcon className="my-5 h-10 w-10 text-pink-500" />
           }
         >
-          <div className="flex justify-center">
-            <CommentsMemo postId={id} />
-          </div>
-        </Suspense>
+          <Suspense
+            fallback={
+              <div className="flex justify-center">
+                <Spinner />
+              </div>
+            }
+          >
+            <div className="flex justify-center">
+              <CommentsMemo postId={id} />
+            </div>
+          </Suspense>
+        </ErrorBoundary>
       </li>
     </>
   )
