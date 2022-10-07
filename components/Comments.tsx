@@ -24,6 +24,17 @@ const Comments: React.FC<Props> = ({ postId }) => {
         editedComment={editedComment}
         setEditedComment={setEditedComment}
       />
+      <ul data-testid="ul-comment" className="my-5">
+        {comments?.map((comment) => (
+          <CommentItemMemo
+            key={comment.id}
+            id={comment.id}
+            comment={comment.comment}
+            user_id={comment.user_id}
+            setEditedComment={setEditedComment}
+          />
+        ))}
+      </ul>
     </div>
   )
 }
