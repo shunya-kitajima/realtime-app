@@ -18,5 +18,11 @@ describe('Authentication', () => {
     cy.get('input[placeholder="Email"]').should('be.visible')
     cy.get('input[placeholder="Password"]').should('be.visible')
   })
+  it('Shall not navigate to DashBoard when wrong credentials', () => {
+    cy.get('input[placeholder="Email"]').type('user1@test.com')
+    cy.get('input[placeholder="Password"]').type('pass')
+    cy.get('[type="submit"]').click()
+    cy.get('[data-testid="logout"]').should('not.exist')
+  })
 })
 export {}
