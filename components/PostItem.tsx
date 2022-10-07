@@ -95,6 +95,9 @@ const PostItem: React.FC<Omit<Post, 'created_at'>> = ({
           className="ml-2 h-6 w-6 cursor-pointer text-blue-500"
           onClick={() => setOpenComments(!openComments)}
         />
+        <div className="flex justify-center">
+          <CommentsMemo postId={id} />
+        </div>
       </li>
     </>
   )
