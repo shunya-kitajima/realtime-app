@@ -28,8 +28,12 @@ describe('Authentication', () => {
     cy.get('input[placeholder="Email"]').type('user3@test.com')
     cy.get('input[placeholder="Password"]').type('password')
     cy.contains('change mode ?').click()
+    cy.get('[type="submit"]').should('have.text', 'Register')
     cy.get('[type="submit"]').click()
-    cy.get('[data-testid="logout"]').should('be.visible')
+    cy.get('input[placeholder="Username"]').should(
+      'have.valu',
+      'user3@test.com'
+    )
   })
 })
 export {}
