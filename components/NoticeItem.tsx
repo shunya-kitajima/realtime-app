@@ -19,12 +19,14 @@ const NoticeItem: React.FC<Omit<Notice, 'created_at'>> = ({
       {session?.user?.id === user_id && (
         <div className="float-right ml-20 flex">
           <PencilIcon
+            data-testid="pencil-notice"
             className="mx-1 h-5 w-5 cursor-pointer text-blue-500"
             onClick={() => {
               update({ id: id, content: content })
             }}
           />
           <TrashIcon
+            data-testid="trash-notice"
             className="h-5 w-5 cursor-pointer text-blue-500"
             onClick={() => {
               deleteNoticeMutation.mutate(id)
