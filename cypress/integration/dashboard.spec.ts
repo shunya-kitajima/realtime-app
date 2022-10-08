@@ -44,8 +44,8 @@ describe('DashBoard', () => {
       .should('have.text', 'Comment A')
 
     cy.get('[data-testid="trash-post"]').click()
-    cy.get('[data-testid="ul-post"]').children().should('have.length', 0)
     cy.get('[data-testid="ul-comment"]').children().should('have.length', 0)
+    cy.get('[data-testid="ul-post"]').children().should('have.length', 0)
   })
 })
 export {}
