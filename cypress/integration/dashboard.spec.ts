@@ -28,7 +28,6 @@ describe('DashBoard', () => {
       .should('have.text', 'Comment A')
     cy.get('[data-testid="pencil-comment"]').click()
     cy.get('input[placeholder="New Comment ?"]').type('++')
-    cy.get('[data-testid="btn-comment"]').should('have.text', 'Update')
     cy.get('[data-testid="btn-comment"]').click()
     cy.get('[data-testid="ul-comment"]')
       .children()
