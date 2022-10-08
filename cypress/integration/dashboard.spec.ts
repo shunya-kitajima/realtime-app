@@ -32,6 +32,16 @@ describe('DashBoard', () => {
     cy.get('[data-testid="ul-comment"]')
       .children()
       .should('have.text', 'Comment A++')
+    cy.get('[data-testid="trash-comment"').click()
+    cy.get('[data-testid="ul-comment"]').children().should('have.length', 0)
+
+    cy.get('input[placeholder="New Comment ?"]').should('be.visible')
+    cy.get('input[placeholder="New Comment ?"]').type('Comment A')
+    cy.get('[data-testid="btn-comment"]').click()
+    cy.get('[data-testid="ul-comment"]').children().should('have.length', 1)
+    cy.get('[data-testid="ul-comment"]')
+      .children()
+      .should('have.text', 'Comment A')
 
     cy.get('[data-testid="trash-post"]').click()
     cy.get('[data-testid="ul-post"]').children().should('have.length', 0)
